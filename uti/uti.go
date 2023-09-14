@@ -1,5 +1,7 @@
 package uti
 
+import "github.com/vicchass/utisli"
+
 type Address struct {
 	City           string
 	Close_montreal bool
@@ -24,3 +26,22 @@ var Stu4 = Student{Firstname: "elena", Lastname: "svitolina", Marks: []int{12, 1
 var Stu5 = Student{Firstname: "janes", Lastname: "sawer", Marks: []int{4, 6, 9, 12, 15, 18}, address: Address{City: "montreal", Close_montreal: true}}
 
 var Stu6 = Student{Firstname: "fransisco", Lastname: "palon", Marks: []int{17, 16, 19, 20, 2, 7, 3}, address: Address{City: "repentigny", Close_montreal: true}}
+
+// check if a name is in the students , return an int of number of times the name exsits
+func Check_name_exist(the_students []Student, firstname string) int {
+	// return the slice of all firstname
+	slice_firstname := Slice_string_first(the_students)
+	// return number of first name
+	num := utisli.Number_string_slice(slice_firstname, firstname)
+	return num
+}
+
+// get a slice of strings of firstname
+func Slice_string_first(all_students []Student) []string {
+	var out_slice []string
+	for _, v := range all_students {
+		out_slice = append(out_slice, v.Firstname)
+	}
+	return out_slice
+
+}
